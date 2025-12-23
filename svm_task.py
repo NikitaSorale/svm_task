@@ -1,6 +1,5 @@
-# ===============================================
+
 # SVM Task – Parts 1 to 5
-# ===============================================
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -8,9 +7,8 @@ from sklearn.datasets import make_circles
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 
-# -----------------------------------------------
+
 # Part 1: Kernel Selection (RBF Kernel)
-# -----------------------------------------------
 
 # Create ring-shaped dataset
 X, y = make_circles(n_samples=300, noise=0.05, factor=0.5, random_state=42)
@@ -30,9 +28,8 @@ plt.legend()
 plt.title('Part 1: RBF Kernel SVM Data')
 plt.show()
 
-# -----------------------------------------------
+
 # Part 2: Hyperparameter Effects (C value)
-# -----------------------------------------------
 
 # SVM with C = 1
 svm_c1 = SVC(kernel='rbf', C=1.0)
@@ -45,9 +42,8 @@ svm_c10.fit(X_scaled, y)
 print("Part 2 – Support vectors with C=1:", svm_c1.n_support_)
 print("Part 2 – Support vectors with C=10:", svm_c10.n_support_)
 
-# -----------------------------------------------
+
 # Part 3: Support Vector Properties
-# -----------------------------------------------
 
 # Show indices of support vectors
 print("Part 3 – Indices of support vectors:", svm_rbf.support_)
@@ -61,9 +57,8 @@ svm_rbf_new = SVC(kernel='rbf', C=1.0, gamma='scale')
 svm_rbf_new.fit(X_new, y_new)
 print("Part 3 – SV after removing far-away points:", svm_rbf_new.n_support_)
 
-# -----------------------------------------------
+
 # Part 4: Feature Scaling
-# -----------------------------------------------
 
 # Make one feature very large to simulate unscaled data
 X_unscaled = X.copy()
@@ -82,9 +77,8 @@ svm_scaled = SVC(kernel='rbf', C=1.0)
 svm_scaled.fit(X_scaled2, y)
 print("Part 4 – Support vectors with scaling:", svm_scaled.n_support_)
 
-# -----------------------------------------------
+
 # Part 5: Decision Function
-# -----------------------------------------------
 
 w = np.array([0.5, -1.2])
 b = -0.3
@@ -97,3 +91,4 @@ if decision_value >= 0:
     print("Part 5 – Predicted class: Positive")
 else:
     print("Part 5 – Predicted class: Negative")
+
